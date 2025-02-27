@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blog Page Debugging Repository
 
-## Getting Started
+This repository contains the code for our Next.js application with specific focus on the blog functionality that's currently experiencing errors.
 
-First, run the development server:
+## Context
 
-```bash
-npm run dev
+Our main production site is deployed on Vercel, but we've removed the blog pages from that deployment to prevent errors from affecting the client-facing site. This repository contains the complete codebase including the problematic blog pages for debugging purposes.
+
+### Issue Description
+
+The blog pages (app/blog/page.tsx and app/blog/[slug]/page.tsx) are currently throwing errors when deployed. This is obviosuly an issue to do with the search params used in the slug page. Specifically:
+
+20:35:22.943
+20:35:22.943
+app/blog/[slug]/page.tsx
+20:35:22.943
+Type error: Type 'BlogParams' does not satisfy the constraint 'PageProps'.
+20:35:22.943
+Types of property 'params' are incompatible.
+20:35:22.943
+Type '{ slug: string; }' is missing the following properties from type 'Promise<any>': then, catch, finally, [Symbol.toStringTag]
+20:35:22.943
+20:35:23.054
+error Command failed with exit code 1.
+20:35:23.055
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+20:35:23.076
+Error: Command "yarn run build" exited with 1
+20:35:23.389
+
+## Setup Instructions
+
+Clone this repository:
+bashCopygit clone https://github.com/anna-rosew/blog-site.git
+cd blog-site
+
+### Install dependencies:
+bashCopynpm install
+# or
+yarn install
+
+### Create a .env.local file with the following variables:
+Copy# Add any environment variables needed, like API keys, database connections, etc.
+
+### Run the development server:
+bashCopynpm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Navigate to http://localhost:3000/blog to see the issue in action
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment for Testing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+If you need to deploy this to test in a production-like environment:
 
-## Learn More
+Create a new project on Vercel
+Connect it to your fork of this repository
+Configure the same environment variables
+Deploy
 
-To learn more about Next.js, take a look at the following resources:
+## Technical Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Next.js 14
+TypeScript
+Tailwind CSS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## How to Submit Fixes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Create a new branch:
+bashCopygit checkout -b fix-blog-issue
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Make your changes
+Commit and push:
+bashCopygit add .
+git commit -m "Fixed blog page issues"
+git push origin fix-blog-issue
+
+Create a pull request against the main branch
+
+## Contact
+If you have any questions or need additional information, please contact me at annarosewain9@gmail.com.
+Thank you for your help with debugging this issue!
