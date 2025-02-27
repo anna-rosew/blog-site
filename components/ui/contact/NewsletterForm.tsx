@@ -9,7 +9,7 @@ import { newsletterSchema } from "@/lib/schemas/newsletterSchema";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-import { subscribe } from "@/app/api/newsletter";
+import { subscribe } from "@/api/newsletter";
 import { Card, CardContent } from "@/components/ui/card";
 import SendIcon from "@/public/Assets/Icons/SendIcon";
 

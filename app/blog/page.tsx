@@ -1,31 +1,27 @@
-import { Button } from "@/components/ui/button";
-import SunIcon from "@/public/Assets/Icons/SunIcon";
-import Link from "next/link";
 import React from "react";
+import ConstructionLayout from "@/components/layout/ConstructionLayout";
+import { getAllPosts } from "@/lib/blog";
+import { FeaturedPosts } from "@/components/ui/blog/FeaturedPosts";
+import { PostGrid } from "@/components/ui/blog/PostGrid";
 
 export default async function BlogPage() {
+  const posts = await getAllPosts();
   return (
-    <div className="flex justify-center items-center h-screen container">
-      <div className="mx-auto">
-        <SunIcon className="mx-auto my-4" />
-        <h1 className="text-center md:text-6xl mb-8 ">Coming Soon!</h1>
-
-        <p className="mt-4 text-lg justify-center text-center">
-          <>
-            <span>Check back soon!</span>
-            <br />
-            <span>
-              In the meantime, you take a look at{" "}
-              <Link href="/blog">classes & retreats.</Link>
-            </span>
-            <Link href="/work">
-              <Button variant="outline" size="lg" className="my-5 mx-auto">
-                Start my journey
-              </Button>
-            </Link>
-          </>
+    <ConstructionLayout>
+      <div className="container mx-auto px-4 py-8">
+        <h1>Blog</h1>
+        <p className="font-bold md:text-center">
+          Come and explore how your body, mind and breath work together. Open
+          yourself to new dimensions of experience and personal growth.
         </p>
+
+        <section className="page-section">
+          <FeaturedPosts posts={posts} />
+        </section>
+        <section className="page-section">
+          <PostGrid posts={posts} />
+        </section>
       </div>
-    </div>
+    </ConstructionLayout>
   );
 }

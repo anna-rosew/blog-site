@@ -21,9 +21,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "./card";
+} from "../card";
 import { contactSchema } from "@/lib/schemas/contactSchema";
-import { send } from "@/app/api/contact";
+import { send } from "@/api/contact";
 
 const ContactForm = () => {
   // 1. Define your form.

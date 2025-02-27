@@ -4,8 +4,8 @@ import Image from "next/image";
 import ContactImage from "@/public/Assets/Images/contact.webp";
 import ContactSmall from "@/public/Assets/Images/contact-mobile.webp";
 
-import ContactForm from "@/components/ui/ContactForm";
-import NewsletterForm from "@/components/ui/NewsletterForm";
+import ContactForm from "@/components/ui/contact/ContactForm";
+import NewsletterForm from "@/components/ui/contact/NewsletterForm";
 
 const Contact = () => {
   return (

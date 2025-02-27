@@ -1,6 +1,6 @@
 "use server";
 
-import { EmailTemplate } from "../emails/email-template";
+import FirstResponse from "@/components/ui/contact/templates/FirstResponse";
 import { Resend } from "resend";
 import { contactSchema } from "@/lib/schemas/contactSchema";
 import { z } from "zod";
@@ -13,7 +13,7 @@ export const send = async (contactFormData: z.infer<typeof contactSchema>) => {
       from: `Acme <${process.env.RESEND_FROM_EMAIL}>`,
       to: [contactFormData.email],
       subject: "Thank you for getting in touch!",
-      react: EmailTemplate({ firstName: contactFormData.firstName }),
+      react: FirstResponse({ FirstName: contactFormData.firstName }),
     });
 
     if (error) {
