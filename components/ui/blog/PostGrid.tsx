@@ -58,7 +58,8 @@ export function PostGrid({ posts }: PostGridProps) {
       !selectedPrimaryTag || post.primaryTag === selectedPrimaryTag;
     const secondaryTagMatch =
       selectedSecondaryTags.length === 0 ||
-      selectedSecondaryTags.some((tag) => post.secondaryTags.includes(tag));
+      (post.secondaryTags &&
+        selectedSecondaryTags.some((tag) => post.secondaryTags.includes(tag)));
     return typeMatch && primaryTagMatch && secondaryTagMatch;
   });
 
@@ -189,23 +190,31 @@ export function PostGrid({ posts }: PostGridProps) {
             <Card className="h-full">
               <CardContent>
                 <div className="relative w-full h-48 mb-4 text-left">
-                  <Image
-                    src={post.coverImage}
-                    alt={post.title}
-                    fill
-                    className="object-cover brightness-75"
-                  />
-
-                  <div className="absolute top-4 right-4 flex items-center px-3 py-1 gap-2 bg-white/30 w-fit rounded-sm">
-                    <PostTypeIcon
-                      type={post.type}
-                      className="text-white"
-                      size={20}
+                  {post.coverImage ? (
+                    <Image
+                      src={post.coverImage}
+                      alt={post.title || "Post image"}
+                      fill
+                      className="object-cover brightness-75"
                     />
-                    <p className="text-sm font-medium text-white capitalize">
-                      {post.type}
-                    </p>
-                  </div>
+                  ) : (
+                    <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                      <span className="text-gray-400">No image</span>
+                    </div>
+                  )}
+
+                  {post.type && (
+                    <div className="absolute top-4 right-4 flex items-center px-3 py-1 gap-2 bg-white/30 w-fit rounded-sm">
+                      <PostTypeIcon
+                        type={post.type}
+                        className="text-white"
+                        size={20}
+                      />
+                      <p className="text-sm font-medium text-white capitalize">
+                        {post.type}
+                      </p>
+                    </div>
+                  )}
                 </div>
                 <div className="px-4">
                   {/* Tags with different styling */}
@@ -219,15 +228,16 @@ export function PostGrid({ posts }: PostGridProps) {
                     </Badge>
 
                     {/* Secondary Tags */}
-                    {post.secondaryTags.map((tag) => (
-                      <Badge
-                        key={tag}
-                        variant="outline"
-                        className="text-xs font-normal text-gray-600 border-gray-400"
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
+                    {post.secondaryTags &&
+                      post.secondaryTags.map((tag) => (
+                        <Badge
+                          key={tag}
+                          variant="outline"
+                          className="text-xs font-normal text-gray-600 border-gray-400"
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
                   </div>
 
                   <h2 className="font-normal text-lg leading-8 mb-2 line-clamp-2 text-left text-customSienna my-2">
