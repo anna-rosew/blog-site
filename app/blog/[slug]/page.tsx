@@ -10,13 +10,11 @@ import ConstructionLayout from "@/components/layout/ConstructionLayout";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import type { MDXContent, Post, PodcastPost, RecipePost } from "@/types/index";
 
-type BlogParams = {
-  params: {
-    slug: string;
-  };
-};
-
-export async function generateMetadata({ params }: BlogParams) {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const post = await getPostBySlug(params.slug);
 
   if (!post) {
@@ -64,9 +62,12 @@ const cleanMDXContent = (content: string): string => {
     .trim();
 };
 
-// Main Component with ts-expect-error directive
-
-export default async function BlogPost({ params }: BlogParams) {
+// Main Component
+export default async function BlogPost({
+  params,
+}: {
+  params: { slug: string };
+}) {
   // Fetch post data
   const post = await getPostBySlug(params.slug);
 
