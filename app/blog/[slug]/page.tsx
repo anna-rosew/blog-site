@@ -15,7 +15,9 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }) {
-  const post = await getPostBySlug(params.slug);
+  // Ensure params is awaited
+  const { slug } = params;
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     return {
@@ -68,8 +70,11 @@ export default async function BlogPost({
 }: {
   params: { slug: string };
 }) {
+  // Destructure and await params
+  const { slug } = params;
+
   // Fetch post data
-  const post = await getPostBySlug(params.slug);
+  const post = await getPostBySlug(slug);
 
   // Handle 404
   if (!post) {
