@@ -9,17 +9,21 @@ import { RecipeTemplate } from "@/components/ui/blog/templates/RecipeTemplate";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import type { MDXContent, Post, PodcastPost, RecipePost } from "@/types/index";
 
-// Updated type definition to match Next.js 15's expectations
-type Params = { slug: string };
+// Next.js specific type imports
+import { Metadata } from "next";
 
-// Next.js 15 compatibility - params can be a Promise or an object
+// Simplified params type
+type Params = {
+  slug: string;
+};
+
+// Metadata generation
 export async function generateMetadata({
   params,
 }: {
-  params: Params | Promise<Params>;
-}) {
-  // Properly await params if it's a Promise
-  const resolvedParams = params instanceof Promise ? await params : params;
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const resolvedParams = await params;
   const slug = resolvedParams.slug;
 
   const post = await getPostBySlug(slug);
@@ -50,7 +54,7 @@ export async function generateMetadata({
 }
 
 // Static Params
-export async function generateStaticParams(): Promise<Array<Params>> {
+export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
   const posts = await getAllPosts();
   return posts.map((post: Post) => ({
     slug: post.slug,
@@ -69,14 +73,13 @@ const cleanMDXContent = (content: string): string => {
     .trim();
 };
 
-// Main Component with updated type definition
+// Main Component
 export default async function BlogPost({
   params,
 }: {
-  params: Params | Promise<Params>;
+  params: Promise<Params>;
 }) {
-  // Properly await params if it's a Promise
-  const resolvedParams = params instanceof Promise ? await params : params;
+  const resolvedParams = await params;
   const slug = resolvedParams.slug;
 
   // Fetch post data using resolved slug
