@@ -16,7 +16,11 @@ type BlogParams = {
 };
 
 export async function generateMetadata({ params }: BlogParams) {
-  const post = await getPostBySlug(params.slug);
+  // Properly await params if it's a Promise
+  const resolvedParams = params instanceof Promise ? await params : params;
+  const slug = resolvedParams.slug;
+
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     return {
@@ -65,8 +69,12 @@ const cleanMDXContent = (content: string): string => {
 
 // Main Component
 export default async function BlogPost({ params }: BlogParams) {
-  // Fetch post data - make sure to await this
-  const post = await getPostBySlug(params.slug);
+  // Properly await params if it's a Promise
+  const resolvedParams = params instanceof Promise ? await params : params;
+  const slug = resolvedParams.slug;
+
+  // Fetch post data using resolved slug
+  const post = await getPostBySlug(slug);
 
   // Handle 404
   if (!post) {
