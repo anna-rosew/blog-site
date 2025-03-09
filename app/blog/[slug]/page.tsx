@@ -63,10 +63,9 @@ const cleanMDXContent = (content: string): string => {
     .trim();
 };
 
-// Main Component with ts-expect-error directive
-
+// Main Component
 export default async function BlogPost({ params }: BlogParams) {
-  // Fetch post data
+  // Fetch post data - make sure to await this
   const post = await getPostBySlug(params.slug);
 
   // Handle 404
