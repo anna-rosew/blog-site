@@ -39,6 +39,7 @@ const Footer = () => {
                 src={LogoWhite}
                 alt="Rose Long Logo"
                 height={64}
+                width={0}
                 className="mx-auto md:mx-1"
               />
             </Link>

@@ -5,19 +5,18 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { ArticleTemplate } from "@/components/ui/blog/templates/ArticleTemplate";
 import { PodcastTemplate } from "@/components/ui/blog/templates/PodcastTemplate";
 import { RecipeTemplate } from "@/components/ui/blog/templates/RecipeTemplate";
-import ConstructionLayout from "@/components/layout/ConstructionLayout";
 
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import type { MDXContent, Post, PodcastPost, RecipePost } from "@/types/index";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  // Ensure params is awaited
-  const { slug } = params;
-  const post = await getPostBySlug(slug);
+type BlogParams = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function generateMetadata({ params }: BlogParams) {
+  const post = await getPostBySlug(params.slug);
 
   if (!post) {
     return {
@@ -64,17 +63,11 @@ const cleanMDXContent = (content: string): string => {
     .trim();
 };
 
-// Main Component
-export default async function BlogPost({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  // Destructure and await params
-  const { slug } = params;
+// Main Component with ts-expect-error directive
 
+export default async function BlogPost({ params }: BlogParams) {
   // Fetch post data
-  const post = await getPostBySlug(slug);
+  const post = await getPostBySlug(params.slug);
 
   // Handle 404
   if (!post) {
@@ -180,8 +173,6 @@ export default async function BlogPost({
   };
 
   return (
-    <ConstructionLayout>
-      <main className="container mx-auto px-4 py-8">{renderTemplate()}</main>
-    </ConstructionLayout>
+    <main className="container mx-auto px-4 py-8">{renderTemplate()}</main>
   );
 }

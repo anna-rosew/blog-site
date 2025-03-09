@@ -38,6 +38,7 @@ export const ArticleHeader = ({ content, type }: ArticleHeaderProps) => {
             alt={content.title}
             loading="eager"
             priority={true}
+            sizes="(max-width: 768px) 100vw, 1200px"
             fill
             className="object-cover rounded-lg"
           />
