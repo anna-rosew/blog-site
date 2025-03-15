@@ -4,7 +4,7 @@ import { MDXContent } from "@/types/index";
 import Image from "next/image";
 import { ArticleHeader } from "./ArticleHeader";
 import { CallToAction } from "./CallToAction";
-import TableOfContents from "../TableOfContents";
+// import TableOfContents from "../TableOfContents";
 import { ArticleFooter } from "./ArticleFooter";
 
 interface LongArticleLayoutProps {
@@ -21,14 +21,15 @@ export const LongArticleLayout = ({
       <ArticleHeader content={content} type={type} />
 
       {/* Intro section with ToC */}
-      <div className="md:grid md:grid-cols-12 gap-8 my-8">
+      {/* <div className="md:grid md:grid-cols-12 gap-8 my-8">
         {content.sections && (
           <div className="col-span-4 sticky top-8 h-fit">
             <TableOfContents sections={content.sections} />
           </div>
         )}
-        <div className="col-span-8">{content.intro?.mdxContent}</div>
-      </div>
+        
+      </div> */}
+      <div className="col-span-8">{content.intro?.mdxContent}</div>
 
       {/* Main content */}
       <div className="mt-8">{content.children}</div>
