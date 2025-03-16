@@ -32,7 +32,7 @@ export const ArticleHeader = ({ content, type }: ArticleHeaderProps) => {
       </div>
       <Link
         href="/blog"
-        className="font-bold uppercase list-none flex items-center gap-x-2 text-sm text-black text-left"
+        className="font-bold mt-4 uppercase list-none flex items-center gap-x-2 text-sm text-customTeal/50 text-left"
       >
         <span className="transform transition-transform duration-300 group-hover:translate-x-2">
           <ArrowLeft />
