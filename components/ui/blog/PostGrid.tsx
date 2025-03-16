@@ -14,6 +14,7 @@ import { Post, PostType, PrimaryTag, SecondaryTag } from "@/types";
 import { PostTypeIcon } from "./PostTypeIcon";
 import Image from "next/image";
 import Link from "next/link";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const POSTS_PER_PAGE = 8;
 
@@ -264,7 +265,7 @@ export function PostGrid({ posts }: PostGridProps) {
             onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
             disabled={currentPage === 1}
           >
-            Previous
+            <ChevronLeft />
           </Button>
 
           <div className="flex gap-2">
@@ -286,7 +287,7 @@ export function PostGrid({ posts }: PostGridProps) {
             }
             disabled={currentPage === totalPages}
           >
-            Next
+            <ChevronRight />
           </Button>
         </div>
       )}
