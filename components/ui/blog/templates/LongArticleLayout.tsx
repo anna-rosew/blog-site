@@ -6,6 +6,8 @@ import { ArticleHeader } from "./ArticleHeader";
 import { CallToAction } from "./CallToAction";
 // import TableOfContents from "../TableOfContents";
 import { ArticleFooter } from "./ArticleFooter";
+// import { ArrowLeft } from "lucide-react";
+// import Link from "next/link";
 
 interface LongArticleLayoutProps {
   content: MDXContent;
