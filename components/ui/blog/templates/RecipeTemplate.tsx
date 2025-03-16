@@ -23,6 +23,8 @@ export function RecipeTemplate({ content }: RecipeTemplateProps) {
             alt={content.title}
             fill
             className="object-cover rounded-lg"
+            placeholder="blur"
+            layout="responsive"
           />
         </div>
       </div>

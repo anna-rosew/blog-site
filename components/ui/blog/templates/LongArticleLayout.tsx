@@ -43,6 +43,8 @@ export const LongArticleLayout = ({
             alt="Content illustration"
             fill
             className="object-cover rounded-lg"
+            placeholder="blur"
+            layout="responsive"
           />
         </div>
       )}

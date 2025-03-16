@@ -44,6 +44,8 @@ export function PodcastTemplate({ content }: PodcastTemplateProps) {
                 fill
                 className="object-cover rounded-lg"
                 priority={false}
+                placeholder="blur"
+                layout="responsive"
               />
             </div>
           )}
