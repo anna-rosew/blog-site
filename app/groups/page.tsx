@@ -1,10 +1,11 @@
 import Card from "@/components/common/NavCard";
 import SectionHeading from "@/components/common/SectionHeading";
-import InPersonCarousel from "@/components/ui/inperson/InPersonCarousel";
-import OnlineCarousel from "@/components/ui/online/OnlineCarousel";
+// import InPersonCarousel from "@/components/ui/inperson/InPersonCarousel";  // temporarily replaced by Spring Cleanse
+// import OnlineCarousel from "@/components/ui/online/OnlineCarousel";         // temporarily replaced by Spring Cleanse
 import { slides } from "@/content/retreats";
 import RetreatsOverview from "@/components/ui/retreats/RetreatsOverview";
 import { groupCards } from "@/content/groups";
+import SpringCleanseSection from "@/components/ui/springcleanse/SpringCleanseSection";
 import React from "react";
 
 const groups = () => {
@@ -22,6 +23,11 @@ const groups = () => {
           ))}
         </div>
       </div>
+
+      {/* Spring Cleanse 2026 — replaces Online and In-Person sections for this season */}
+      <SpringCleanseSection />
+
+      {/* Online Groups — uncomment to restore after the Cleanse
       <div className="online-groups">
         <SectionHeading title="Online Groups" />
         <p className="text md:text-center md:py-10 py-4">
@@ -31,6 +37,9 @@ const groups = () => {
         </p>
         <OnlineCarousel />
       </div>
+      */}
+
+      {/* In-Person Groups — uncomment to restore after the Cleanse
       <div className="in-person-groups mb-8">
         <SectionHeading title="In-Person Groups" />
         <p className="text md:text-center md:py-4 py-2">
@@ -42,6 +51,8 @@ const groups = () => {
         </p>
         <InPersonCarousel />
       </div>
+      */}
+
       <div className="in-person-groups mb-8">
         <SectionHeading title="Retreats" />
         <p className="text md:text-center md:py-10 py-4">
