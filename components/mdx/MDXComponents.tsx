@@ -14,7 +14,8 @@ const generateId = (text: React.ReactNode): string => {
       if (typeof child === "string") return child;
       if (typeof child === "number") return String(child);
       if (child && typeof child === "object" && "props" in child) {
-        return String(child.props.children || "");
+        const props = (child as { props: { children?: unknown } }).props;
+        return String(props.children || "");
       }
       return "";
     })
