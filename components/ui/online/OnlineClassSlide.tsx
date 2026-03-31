@@ -19,8 +19,8 @@ const OnlineClassSlide: React.FC<ClassSlidesProps> = ({ classInfo }) => {
     heading: "Live Zoom Class",
     subheading: "Playback anytime.",
     icon2: StarIcon,
-    heading2: "Membership - £50",
-    subheading2: "Bundle - £24 | Drop-In - £8",
+    heading2: "Sign up for all Classes",
+    subheading2: "Half price — £48",
   };
 
   return (

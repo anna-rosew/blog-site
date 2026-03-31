@@ -1,5 +1,6 @@
 import Card from "@/components/common/NavCard";
 import TestimonialSection from "@/components/ui/testimonials/TestimonialSection";
+// import EasterSeriesSection from "@/components/ui/online/EasterSeriesSection"; // uncomment when Rose approves
 import { workCards } from "@/content/work";
 
 const Work = () => {
@@ -21,6 +22,11 @@ const Work = () => {
         </div>
       </div>
       <TestimonialSection />
+      {/* EASTER SERIES — uncomment when Rose approves
+      <div className="container">
+        <EasterSeriesSection />
+      </div>
+      */}
     </div>
   );
 };
