@@ -21,7 +21,7 @@ export default function RootLayout({
     process.env.NEXT_PUBLIC_UNDER_CONSTRUCTION
   );
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className="min-h-screen bg-customLightBeige">
         <NavBar />
         <main className="flex flex-col">
